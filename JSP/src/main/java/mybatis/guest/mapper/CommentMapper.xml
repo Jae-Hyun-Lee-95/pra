@@ -9,12 +9,18 @@
  			우리는 resultType만 사용할 예정
   -->
 
- <select id="selectComment" resultType="mybatis.guest.model.Comment">
+<!--  <select id="selectComment" resultType="mybatis.guest.model.Comment">
  select
  	comment_no  AS commentNo,
  	user_id		AS userId,
  	comment_content AS commentContent,
  	reg_date	AS regDate
+ from comment_tab
+ </select> -->
+ 
+ <select id="selectComment" resultType="mybatis.guest.model.Comment">
+ select
+	*
  from comment_tab
  </select>
  

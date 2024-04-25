@@ -6,6 +6,11 @@
 <configuration>
  <!-- 디비설정파일 연결 -->
  <properties resource="db.properties"></properties>
+ 
+ <!-- 추가 설정 CommentMapper에서 별칭없이 *을 쓸수 있음 -->
+ <settings>
+ 	<setting name="mapUnderscoreToCamelCase" value="true"/>
+ </settings>
 
  <environments default="development">
  <environment id="development">
