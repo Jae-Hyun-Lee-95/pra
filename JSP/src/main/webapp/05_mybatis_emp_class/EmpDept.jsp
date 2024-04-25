@@ -4,7 +4,13 @@
     
 <%
 EmpService service = EmpService.getInstance();
-List<HashMap> list = service.selectEmpDept();%>     
+List<HashMap> list = service.selectEmpDept();
+
+/* for( HashMap m : list){
+	System.out.println(m.get("empno")); 데이터 잘 가지고 오는지 확인작업
+} */
+
+%>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,11 +29,11 @@ List<HashMap> list = service.selectEmpDept();%>
 
 	<% for(HashMap vo : list) { %>
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td><%=vo.get("empno")%></td>
+			<td><%=vo.get("ename")%></td>
+			<td><%=vo.get("job")%></td>
+			<td><%=vo.get("dname")%></td>
+			<td><%=vo.get("loc")%></td>
 		</tr> 
 	<%} %>
 </table>

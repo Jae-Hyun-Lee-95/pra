@@ -46,6 +46,14 @@ public class CommentService {
 		repo.deleteComment(cNo);
 	}
 	
+	public Comment getArticleByNo(String id) {
+		int article_id = 0;
+		if( id != null ) article_id = Integer.parseInt(id);
+		Comment result = repo.selectByNo(article_id);
+		return result;
+		
+	}
+	
 
 
 }

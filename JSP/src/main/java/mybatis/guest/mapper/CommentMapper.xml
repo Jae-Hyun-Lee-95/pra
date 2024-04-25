@@ -34,6 +34,11 @@
  	</where>
  </select>
  
+ <select id="selectCommentNo" resultType="Comment">
+ 	SELECT ( #{userId}, #{commentContent} )
+ 	FROM comment_tab
+ </select>
+ 
  <!-- 
  	#{변수명} : PreparedStatement의 ? 지정
  	${변수명}	: Statement로 지정해서 ' 자동으로 지정되지 않도록
@@ -50,9 +55,9 @@
  	WHERE comment_no = #{cNo}
  </delete>
  
- <update id="modifyComment" parameterType="int">
+ <update id="updateComment" parameterType="int">
  	UPDATE comment_tab
- 	SET	( #{userId}, #{commentContent}, sysdate())
+ 	SET	( #{userId}, #{commentContent} )
  	WHERE comment_no = #{cNo}
  </update>
  

@@ -113,6 +113,21 @@ public class CommentRepository
 		}
 	}
 	
+	public Comment selectByNo(int cNo) {
+		SqlSession sess = 
+				getSqlSessionFactory().openSession();
+		try {
+			HashMap map = new HashMap();
+			map.put("commentNo", cNo);
+			
+			Comment comment = sess.selectOne("CommentMapper.selectCommentNo", cNo);
+			
+			return comment;
+		}finally {
+			sess.close();
+		}
+	}
+	
 	
 	
 	
