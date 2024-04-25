@@ -45,6 +45,24 @@ public class CommentRepository
 		
 	}
 	
+	public List<Comment> selectComment(HashMap map){
+		SqlSession sess = 
+				getSqlSessionFactory().openSession();
+		try {
+			List<Comment> list = sess.selectList("CommentMapper.selectComment", map);
+			return list;
+			
+			//return sess.selectList("CommentMapper.selectComment");	위코드 변수없이 작성
+			
+		}finally {
+			sess.close(); // 연결객체 반환
+			// 내부적으로 마이바티즈는 ConnectionPool 사용
+		}
+		
+	}
+	
+
+	
 	public void insertComment(Comment c){
 		SqlSession sess = 
 				getSqlSessionFactory().openSession();
@@ -79,5 +97,25 @@ public class CommentRepository
 		}
 		
 	}
+	
+	public void deleteComment(int cNo) {
+		SqlSession sess = 
+				getSqlSessionFactory().openSession();
+		
+		try {
+			
+			int result = sess.delete("CommentMapper.deleteComment", cNo);
+			if(result > 0) {
+				sess.commit();
+			}
+		}finally {
+			sess.close();
+		}
+	}
+	
+	
+	
+	
+	
 
 }

@@ -11,6 +11,10 @@
  <settings>
  	<setting name="mapUnderscoreToCamelCase" value="true"/>
  </settings>
+ 
+ <typeAliases>
+ 	<typeAlias type="mybatis.guest.model.Comment" alias="Comment"/>
+ </typeAliases>
 
  <environments default="development">
  <environment id="development">

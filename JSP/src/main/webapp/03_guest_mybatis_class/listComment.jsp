@@ -5,8 +5,17 @@
   
   <!-- 서비스의 메소드 호출  -->
   <%
+	String selectKey = request.getParameter("selectKey");
+  	String searchWord = request.getParameter("searchWord");
+  	//System.out.println("selectKey:"+ selectKey);
+  	//System.out.println("searchWord:"+ searchWord);
+  	
+  	HashMap condition = new HashMap();
+  	condition.put("selectKey", selectKey);
+  	condition.put("searchWord", searchWord);
+  	
      //HashMap condition = new HashMap();
-     List<Comment> mList = CommentService.getInstance().selectComment();
+     List<Comment> mList = CommentService.getInstance().selectComment(condition);
  %>
   
 <!DOCTYPE HTML>
@@ -18,6 +27,17 @@
 <body>
 
 <a href="insertCommentForm.jsp">방명록 남기기 </a><br/><br/>
+
+<!-- 검색창 추가 -->
+<hr/>
+<form action='listComment.jsp'>
+	<select name='selectKey'>
+		<option value='user_id'>작성자</option>
+		<option value='comment_content'>글내용</option>
+	</select>
+	<input type='text' name='searchWord'>
+	<input type='submit' value='검색'>
+</form>
 
 <table border="1">
 	<tr><td>글번호</td><td>작성자</td><td>등록일</td></tr>

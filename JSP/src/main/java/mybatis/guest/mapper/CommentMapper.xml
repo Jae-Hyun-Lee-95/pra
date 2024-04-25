@@ -20,7 +20,7 @@
  
  <select id="selectComment"
  		parameterType="hashmap"
-  		resultType="mybatis.guest.model.Comment">
+  		resultType="Comment">
  	SELECT
 		*
  	FROM comment_tab
@@ -28,14 +28,33 @@
  		<if test="commentNo != null">
  			comment_no = #{commentNo}
  		</if>
+ 		<if test="selectKey != null">
+ 			${selectKey} LIKE '%${searchWord}%'
+ 		</if>
  	</where>
  </select>
  
-  <insert id="insertComment" parameterType="mybatis.guest.model.Comment">
+ <!-- 
+ 	#{변수명} : PreparedStatement의 ? 지정
+ 	${변수명}	: Statement로 지정해서 ' 자동으로 지정되지 않도록
+  -->
+ 
+  <insert id="insertComment" parameterType="Comment">
  	INSERT INTO
  		comment_tab(user_id, comment_content, reg_date)
  	VALUES ( #{userId}, #{commentContent}, sysdate())
  </insert>
+ 
+ <delete id="deleteComment" parameterType="int">
+ 	DELETE FROM comment_tab
+ 	WHERE comment_no = #{cNo}
+ </delete>
+ 
+ <update id="modifyComment" parameterType="int">
+ 	UPDATE comment_tab
+ 	SET	( #{userId}, #{commentContent}, sysdate())
+ 	WHERE comment_no = #{cNo}
+ </update>
  
  
 </mapper>

@@ -17,12 +17,16 @@
 </head>
 <body>
 <table border="1">
-		<tr><td>작성자</td><td><%=  comment.getCommentNo()%></td></tr>
+		<tr><td>작성자</td><td><%=  comment.getUserId()%></td></tr>
 		<tr><td>메세지</td><td><%=  comment.getCommentContent()%></td></tr>
 		<tr><td>등록일</td><td><%=  comment.getRegDate()%></td></tr>
 		<tr><td colspan="2">
+				<a href='modifyComment.jsp?cNo=<%=  comment.getCommentNo()%>'>
 				<input type="button" id="btnModify" value="수정" />
+				</a>
+				<a href='deleteComment.jsp?cNo=<%=  comment.getCommentNo()%>'>
 				<input type="button" id="btnDelete" value="삭제" />
+				</a>
 				</td></tr>
 </table>
 </body>
