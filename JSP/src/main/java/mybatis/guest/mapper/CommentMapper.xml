@@ -18,10 +18,17 @@
  from comment_tab
  </select> -->
  
- <select id="selectComment" resultType="mybatis.guest.model.Comment">
+ <select id="selectComment"
+ 		parameterType="hashmap"
+  		resultType="mybatis.guest.model.Comment">
  	SELECT
 		*
  	FROM comment_tab
+ 	<where>
+ 		<if test="commentNo != null">
+ 			comment_no = #{commentNo}
+ 		</if>
+ 	</where>
  </select>
  
   <insert id="insertComment" parameterType="mybatis.guest.model.Comment">

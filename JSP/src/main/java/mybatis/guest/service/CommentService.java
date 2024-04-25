@@ -29,5 +29,9 @@ public class CommentService {
 		repo.insertComment(comment);
 	}
 	
+	public Comment selectCommentByPk(int commentNo) {
+		return repo.selectCommentByPk(commentNo);
+	}
+	
 
 }

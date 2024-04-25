@@ -64,5 +64,20 @@ public class CommentRepository
 			sess.close();
 		}
 	}
+	
+	public Comment selectCommentByPk(int cNo) {
+		SqlSession sess = 
+				getSqlSessionFactory().openSession();
+		try {
+			HashMap map = new HashMap();
+			map.put("commentNo", cNo);
+			
+			Comment comment = sess.selectOne("CommentMapper.selectComment", map);
+			return comment;
+		}finally {
+			sess.close();
+		}
+		
+	}
 
 }
