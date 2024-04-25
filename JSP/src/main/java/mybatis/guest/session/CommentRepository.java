@@ -83,15 +83,16 @@ public class CommentRepository
 		}
 	}
 	
-	public Comment selectCommentByPk(int cNo) {
+	public void modifyComment(Comment c) {
 		SqlSession sess = 
 				getSqlSessionFactory().openSession();
 		try {
-			HashMap map = new HashMap();
-			map.put("commentNo", cNo);
-			
-			Comment comment = sess.selectOne("CommentMapper.selectComment", map);
-			return comment;
+			int result = sess.update("CommentMapper.modifyComment", c);
+			if(result == 1) {
+				sess.commit();
+			}else {
+				sess.rollback();
+			}
 		}finally {
 			sess.close();
 		}
@@ -113,14 +114,15 @@ public class CommentRepository
 		}
 	}
 	
-	public Comment selectByNo(int cNo) {
+	
+	public Comment selectCommentByPk(int cNo) {
 		SqlSession sess = 
 				getSqlSessionFactory().openSession();
 		try {
 			HashMap map = new HashMap();
 			map.put("commentNo", cNo);
 			
-			Comment comment = sess.selectOne("CommentMapper.selectCommentNo", cNo);
+			Comment comment = sess.selectOne("CommentMapper.selectComment", map);
 			
 			return comment;
 		}finally {

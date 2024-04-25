@@ -36,24 +36,21 @@ public class CommentService {
 	
 	public void insertComment(Comment comment) {
 		repo.insertComment(comment);
-	}
-	
-	public Comment selectCommentByPk(int commentNo) {
-		return repo.selectCommentByPk(commentNo);
-	}
+	}	
 	
 	public void deleteComment(int cNo) {
 		repo.deleteComment(cNo);
 	}
 	
-	public Comment getArticleByNo(String id) {
-		int article_id = 0;
-		if( id != null ) article_id = Integer.parseInt(id);
-		Comment result = repo.selectByNo(article_id);
-		return result;
+	public void modifyComment(Comment comment) {
+		repo.modifyComment(comment);
 		
 	}
 	
+	public Comment selectCommentByPk(int commentNo) {
+		Comment comment = repo.selectCommentByPk(commentNo);
+		return comment;
+	}
 
 
 }
