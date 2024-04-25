@@ -24,5 +24,25 @@ public class CommentRepository
 		return sessFactory;
 	}
 	
+	/*
+	 	JDBC : Connection (연결)
+	 	mybatis : SeqSession
+	 */
+	
+	public List<Comment> selectComment(){
+		SqlSession sess = 
+				getSqlSessionFactory().openSession();
+		try {
+			List<Comment> list = sess.selectList("CommentMapper.selectComment");
+			return list;
+			
+			//return sess.selectList("CommentMapper.selectComment");	위코드 변수없이 작성
+			
+		}finally {
+			sess.close(); // 연결객체 반환
+			// 내부적으로 마이바티즈는 ConnectionPool 사용
+		}
+		
+	}
 
 }

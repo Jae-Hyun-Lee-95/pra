@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="CommentMapper">
+
+ <!-- [중요] resultMap 사용하지 않을 예정
+ 			우리는 resultType만 사용할 예정
+  -->
+
+ <select id="selectComment" resultType="mybatis.guest.model.Comment">
+ select
+ 	comment_no  AS commentNo,
+ 	user_id		AS userId,
+ 	comment_content AS commentContent,
+ 	reg_date	AS regDate
+ from comment_tab
+ </select>
+ 
+ 
+</mapper>

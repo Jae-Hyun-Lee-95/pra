@@ -15,5 +15,15 @@ public class CommentService {
 		return service;
 	}
 	
+	CommentRepository repo =
+				new CommentRepository();
+	
+	public List<Comment> selectComment() {
+		List<Comment> list = repo.selectComment();
+		return list;
+		
+		//return repo.selectComment();	 위 코드 변수명 없이 리턴
+	}
+	
 
 }
