@@ -19,10 +19,16 @@
  </select> -->
  
  <select id="selectComment" resultType="mybatis.guest.model.Comment">
- select
-	*
- from comment_tab
+ 	SELECT
+		*
+ 	FROM comment_tab
  </select>
+ 
+  <insert id="insertComment" parameterType="mybatis.guest.model.Comment">
+ 	INSERT INTO
+ 		comment_tab(user_id, comment_content, reg_date)
+ 	VALUES ( #{userId}, #{commentContent}, sysdate())
+ </insert>
  
  
 </mapper>

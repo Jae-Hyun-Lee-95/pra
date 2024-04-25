@@ -25,5 +25,9 @@ public class CommentService {
 		//return repo.selectComment();	 위 코드 변수명 없이 리턴
 	}
 	
+	public void insertComment(Comment comment) {
+		repo.insertComment(comment);
+	}
+	
 
 }

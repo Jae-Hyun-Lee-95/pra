@@ -44,5 +44,25 @@ public class CommentRepository
 		}
 		
 	}
+	
+	public void insertComment(Comment c){
+		SqlSession sess = 
+				getSqlSessionFactory().openSession();
+		try {
+			/*
+			 	JDBC : auto commit
+			 	Mybatis : manual commit
+			 */
+		int result = sess.insert("CommentMapper.insertComment", c);
+		if(result == 1) {
+			sess.commit();
+		}else {
+			sess.rollback();
+		}
+		
+		}finally {
+			sess.close();
+		}
+	}
 
 }
