@@ -30,5 +30,6 @@
  <mappers>
  <mapper resource="mybatis/guest/mapper/CommentMapper.xml"/>
  <mapper resource="emp_mybatis/EmpMapper.xml"/>
+ <mapper resource="board_mybatis/BoardMapper.xml"/>
  </mappers>
 </configuration>
