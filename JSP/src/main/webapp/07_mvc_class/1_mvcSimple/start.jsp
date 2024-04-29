@@ -18,5 +18,8 @@
 <a href='/JSP/SimpleControl'>MVC패턴</a>
 <a href='/JSP/SimpleControl?type=first'>MVC패턴2</a>
 
+<hr/>
+<a href='<%= prjName %>/ictedu.do'>MVC패턴3</a>
+
 </body>
 </html>

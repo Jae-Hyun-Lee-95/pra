@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/SimpleControl")
+@WebServlet({"/SimpleControl","*.do"})
 public class SimpleControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
